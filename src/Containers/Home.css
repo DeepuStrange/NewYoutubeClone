@@ -1,0 +1,60 @@
+.navBar{
+    display: grid;
+    grid-template-columns: auto 74% auto;
+    align-items: center;
+}
+hr{
+    border: none;
+    height: 2px;
+    background-color: #333;
+}
+.searchBar::placeholder{
+    color: white;
+    padding: 20px 0px 20px 5px
+}
+.searchBar{
+    outline: none;
+    border: none;
+    border: 1px ridge #333;
+    padding: 10px;
+    /* border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px; */
+    border-bottom-left-radius: 18px;
+    border-top-left-radius: 18px;
+    width: 85%;
+}
+.btn-search{
+    padding:5px;
+    border: 1px ridge #333;
+    background-color: #333;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px; 
+}
+.you{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+.SelectVid{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10%;
+}
+.select{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 10px;
+}
+#img{
+    object-fit:cover;
+    width: 50%;
+}
+/* i:hover{
+    background-color: #333;
+} */
+
+.you i:hover{
+    background-color: #333;
+}
