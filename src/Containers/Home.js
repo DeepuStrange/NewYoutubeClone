@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import './Home.css'
 import SideBar from './SideBar';
+import { displaySelectedVidListState,displayHomeState } from '../Slice/YoutubeSlice';
+import { useDispatch, useSelector } from 'react-redux';
 function Home(props){
+    const dispatch = useDispatch();
+    const {displayHome,displaySelectedVidList} = useSelector((appState)=>appState)
     const [search,setSearch]=useState({
         term:""
     })
@@ -18,7 +22,7 @@ function Home(props){
                     gap:'10px',
                     flexWrap:"wrap",
 
-                }} className='Hover'>
+                }}>
                 <i className="fa fa-youtube-play" style={{fontSize:30,color:"red",}}></i>
                 <i style={{
                 font:"caption",
@@ -51,6 +55,8 @@ function Home(props){
                 <button onClick={(event)=>{
                     event.preventDefault();
                     props.onSearch(search.term);
+                    dispatch(displaySelectedVidListState(displayHome));
+                    dispatch(displayHomeState(displaySelectedVidList));
                     document.getElementById('search').value = "";
                 }}  className='btn-search'><i className="fa fa-search" style={{color:"white", fontSize:25,backgroundColor:"#333"}}></i></button>
                 </div>

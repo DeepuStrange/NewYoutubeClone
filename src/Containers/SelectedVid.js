@@ -4,7 +4,6 @@ import { selectedVideo } from "../Slice/YoutubeSlice";
 function SelectedVid(){
     const {SelectedVid,SelectedVideo} = useSelector((appstate)=>appstate)
     const dispatch = useDispatch();
-    console.log(SelectedVideo,SelectedVid) 
     if(SelectedVideo.length > 0){
         const url = `https://www.youtube.com/embed/${SelectedVideo[0].id.videoId}`
         return(

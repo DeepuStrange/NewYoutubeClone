@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
 import "./Home.css"
 import VideoList from "./VideoList";
+import SelectedVid from "./SelectedVid";
 function SideBar(){
+    let {displayHome} = useSelector((appState)=>appState)
     return(
         <div style={{
             display:"grid",
@@ -71,7 +74,9 @@ function SideBar(){
                  <i>Liked Videos</i>   
                 </div>
         </div>
-        <VideoList></VideoList>
+        {
+            displayHome === true ? (<VideoList></VideoList>) :(<SelectedVid></SelectedVid>)
+        }
         </div>
     )
 }

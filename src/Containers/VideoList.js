@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SelectedVid,selectedVideo } from "../Slice/YoutubeSlice";
+import { SelectedVid,selectedVideo,displaySelectedVidListState, displayHomeState } from "../Slice/YoutubeSlice";
 import "./Home.css"
 function VideoList(){
     const dispatch = useDispatch();
-    let {videos} = useSelector((appstate)=>appstate);
+    let {videos,displayHome,displaySelectedVidList} = useSelector((appstate)=>appstate);
     let fetchSelected = useCallback(async(term)=>{
         const {data} =await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBXSu1l4ms7BtcTDju71hBTiLm7JEZdQq4&q=you are there for me&type=video&maxResults=10&channelId=${term}`);
         dispatch(SelectedVid(data.items))
@@ -33,7 +33,9 @@ function VideoList(){
                             width:"auto"
                         }} onClick={()=>{
                             fetchSelected(vid.snippet.channelId);
-                            dispatch(selectedVideo(vid))
+                            dispatch(selectedVideo(vid));
+                            dispatch(displaySelectedVidListState(displayHome));
+                            dispatch(displayHomeState(displaySelectedVidList))
                         }}></img>
                         <span>{vid.snippet.title}</span>
                     </div>

@@ -6,6 +6,8 @@ const YoutubeSlice = createSlice({
         term:'',
         SelectedVid:[],
         SelectedVideo:[],
+        displayHome:true,
+        displaySelectedVidList :false,
     },
     reducers:{
         getVideos:(state,param)=>{
@@ -19,8 +21,16 @@ const YoutubeSlice = createSlice({
         selectedVideo:(state,param)=>{
             const {payload} = param;
             state.SelectedVideo = [payload];
+        },
+        displayHomeState :(state,param)=>{
+            const {payload} = param;
+            state.displayHome = payload
+        },
+        displaySelectedVidListState :(state,param)=>{
+            const {payload} = param
+            state.displaySelectedVidList = payload
         }
     }
 })
 export default YoutubeSlice.reducer;
-export const {getVideos,SelectedVid,selectedVideo} = YoutubeSlice.actions;
+export const {getVideos,SelectedVid,selectedVideo,displayHomeState,displaySelectedVidListState} = YoutubeSlice.actions;
